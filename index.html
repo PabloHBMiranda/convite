@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Um convite pra você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="noise"></div>
+
+  <main class="stage">
+
+    <!-- STEP 1: ENVELOPE -->
+    <section id="envelope-screen" class="screen active">
+      <span class="eyebrow">um convite secreto</span>
+      <h1 class="title">Tem algo esperando<br>por você.</h1>
+      <p class="subtitle">Só uma coisa: é surpresa. Toque no envelope.</p>
+
+      <button id="envelope-btn" class="envelope" aria-label="Abrir convite">
+        <div class="envelope-body">
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 21s-7.5-4.7-10-9.3C0.3 8 2 4 6 4c2.2 0 3.7 1.2 6 3.6C14.3 5.2 15.8 4 18 4c4 0 5.7 4 4 7.7C19.5 16.3 12 21 12 21z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+        <span class="envelope-hint">toque para abrir</span>
+      </button>
+    </section>
+
+    <!-- STEP 2: REVEAL -->
+    <section id="reveal-screen" class="screen">
+      <div class="card">
+        <span class="eyebrow accent">confirmado ✦</span>
+        <h2 class="reveal-title">Vamos viajar.</h2>
+        <p class="reveal-sub">Para onde? Isso você só vai saber quando chegar.</p>
+
+        <div class="details">
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail-text">
+              <span class="detail-label">Data</span>
+              <span class="detail-value" id="trip-date">Sábado, 11 de julho</span>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail-text">
+              <span class="detail-label">Horário</span>
+              <span class="detail-value">08:00 em ponto. Pronta e arrumada</span>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 7h-3V6a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v1H4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM9 6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1H9V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail-text">
+              <span class="detail-label">O que levar</span>
+              <span class="detail-value">Mala pequena: roupas leves pro dia, um look bonito pra noite</span>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.5" r="1" fill="currentColor"/></svg>
+            </div>
+            <div class="detail-text">
+              <span class="detail-label">Única regra</span>
+              <span class="detail-value">Nada de perguntas.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">--</span>
+            <span class="countdown-label">dias</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-label">horas</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-minutes">--</span>
+            <span class="countdown-label">min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-seconds">--</span>
+            <span class="countdown-label">seg</span>
+          </div>
+        </div>
+
+        <p class="footer-note">feito com ♥ só pra você</p>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="confirm-modal" class="modal-overlay">
+    <div class="modal-box">
+      <p class="modal-text" id="modal-text">Deseja abrir?</p>
+      <span class="modal-hint" id="modal-hint"></span>
+
+      <form class="modal-password-form" id="modal-password-form" autocomplete="off">
+        <input
+          type="text"
+          id="modal-password-input"
+          class="modal-input"
+          placeholder="dd/mm/aaaa"
+          inputmode="numeric"
+          maxlength="10"
+          aria-label="Senha: data em que vocês se conheceram, no formato dia/mês/ano"
+        />
+        <button type="submit" class="modal-btn modal-btn-static">Enviar</button>
+        <span class="modal-error" id="modal-password-error">Preenche uma data válida (dd/mm/aaaa)</span>
+      </form>
+
+      <div class="modal-btn-zone" id="modal-btn-zone">
+        <button class="modal-btn" id="modal-btn" type="button">SIM</button>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
